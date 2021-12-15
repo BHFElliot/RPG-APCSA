@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class Player {
+	
+	Scanner in = new Scanner(System.in);
+	private String name;
+	private int gender;
+	
+	public Player(String playerName, char sex) {
+		name = playerName;
+			if (sex == 'M' ||sex == 'm')
+				gender = 0;
+			else if (sex == 'F' || sex == 'f')
+				gender = 1;
+			else if (sex =='O' || sex == 'o')
+				gender = 2;
+			else {
+				System.out.println("Please input a valid gender! \nM/F/O");
+				gender = pickGender();
+			}
+			creationDone();
+			
+		}
+	
+	public int getGender() {
+		return gender;
+	}
+	
+	public void setGender(char sex) {
+		if (sex == 'M' ||sex == 'm')
+			gender = 0;
+		else if (sex == 'F' || sex == 'f')
+			gender = 1;
+		else if (sex =='O' || sex == 'o')
+			gender = 2;
+		else 
+			gender = pickGender();
+	}
+	
+	public String getname() {
+		return name;
+	}
+
+	public void setName(String newName) {
+		name = newName;
+	}
+	
+	public int pickGender() {
+		char sex;
+			while(true) {
+				
+				sex = in.nextLine().charAt(0);
+				
+				if (sex == 'M' ||sex == 'm')
+					return 0;
+				else if (sex == 'F' || sex == 'f')
+					return 1;
+				else if (sex =='O' || sex == 'o')
+					return 2;
+				else
+					System.out.println("M/F/O");
+			}
+		} 
+	
+
+	private void creationDone() {
+		System.out.println(name + " with gender " + gender + "\n is this ok? Y/N");
+		if (in.nextLine().charAt(0) == 'Y' || in.nextLine().charAt(0) == 'y')
+			System.out.println("Good Luck!");
+		else if (in.nextLine().charAt(0) == 'N' || in.nextLine().charAt(0) == 'n') {
+			System.out.println("Please input your new gender");
+			gender = pickGender();
+			System.out.println("Please input a new name");
+			name = in.nextLine();
+			creationDone();
+		}
+		else 
+			System.out.println("I'll take that as a yes!");
+		
+			
+		
+	}
+
+}
