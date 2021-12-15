@@ -8,7 +8,7 @@ public class Player {
 	
 	public Player(String playerName, char sex) {
 		name = playerName;
-			if (sex == 'M' ||sex == 'm' || sex == 'F) || sex == 'f' || sex == 'O' || sex == 'o')
+			if (sex == 'M' ||sex == 'm' || sex == 'F || sex == 'f' || sex == 'O' || sex == 'o')
 				gender = sex;
 			else {
 				System.out.println("Please input a valid gender! \nM/F/O");
@@ -36,7 +36,7 @@ public class Player {
 	
 	public int selectGender() {		
 		char sex = in.nextLine().charAt(0);
-		if (sex == 'M' ||sex == 'm' || sex == 'F) || sex == 'f' || sex == 'O' || sex == 'o')
+		if (sex == 'M' ||sex == 'm' || sex == 'F || sex == 'f' || sex == 'O' || sex == 'o')
 			gender = sex;
 		else {
 			System.out.println("Please input a valid gender! \nM/F/O");
@@ -48,14 +48,14 @@ public class Player {
 		System.out.println(name + " with gender " + gender + "\n is this ok? Y/N");
 		if (in.nextLine().charAt(0) == 'Y' || in.nextLine().charAt(0) == 'y')
 			System.out.println("Good Luck!");
+		
 		else if (in.nextLine().charAt(0) == 'N' || in.nextLine().charAt(0) == 'n') {
 			System.out.println("Please input your new gender");
 			gender = pickGender();
 			System.out.println("Please input a new name");
 			name = in.nextLine();
 			creationDone();
-		}
-		else 
+		} else 
 			System.out.println("Please input yes or no.");
 			creationDone();
 	}
