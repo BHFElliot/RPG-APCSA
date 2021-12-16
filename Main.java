@@ -3,14 +3,22 @@ package game;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
-
+/* This kickstarts the game.
+ * 
+ * @Author: Elliot Miller
+ * @Version: 1.0
+ * @Since: 12-15-21
+ */
 public class Main {
 
 	static Scanner in = new Scanner(System.in);
+	//player and statsheets
+	public static Player player;
+	public static ResourceSheet playerSheet;
 	
 	public static void main(String[] args) {
-		Player player = characterCreate();
-		ResourceSheet playerSheet = new ResourceSheet(player);	
+		player = characterCreate();
+		playerSheet = new ResourceSheet(player);	
 		new Intro();
 	}
 	
