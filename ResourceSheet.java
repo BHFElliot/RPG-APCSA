@@ -1,6 +1,12 @@
 package game;
-//this whole class is basically just getters and setters for the players resources. It's very likely that at least one of these
-//goes completely unutilized.
+
+/* this whole class is basically just getters and setters for the players resources. It's very likely that at least one of these
+ * goes completely unutilized.
+ * 
+ * @Author: Elliot Miller
+ * @Version: 1.0
+ * @Since: 12-15-21
+ */
 public class ResourceSheet {
 	
 	private int health;
@@ -38,6 +44,8 @@ public class ResourceSheet {
 		energy += a;
 		if (energy > 100)
 			energy = 100;
+		else if (energy < 0)
+			energy = 0;
 	}
 	
 	public void setEnergy(int a) {
@@ -52,6 +60,8 @@ public class ResourceSheet {
 		sanity += a;
 		if (sanity > 100)
 			sanity = 100;
+		else if (sanity < 0)
+			sanity = 0;
 	}
 	
 	public void setSanity(int a) {
