@@ -31,9 +31,9 @@ public class Player {
 	private void create() {
 		name = JOptionPane.showInputDialog("Input a character name please");
 		String genders[] = {"Male", "Female", "Other"};
-		if(name == null ||name.equals("")) {
+		while(name == null ||name.equals("")) {
 			System.out.println("You can't name your character nothing!");
-			create();
+			name = JOptionPane.showInputDialog("Input a character name please");
 		}
 		
 		int characterGender = JOptionPane.showOptionDialog (null, "Input the character's gender please.", "Character Creator", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, genders, 0);
@@ -48,10 +48,7 @@ public class Player {
 		}
 		
 		if (JOptionPane.showOptionDialog (null, "You've selected:\n" + name + " with gender: " + gender, "Character Creator", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, 0) == 0)
-			System.out.println("Good Luck!");
+			System.out.println("good luck!");
 		else
 			create();
-		
 	}
-	
-}
