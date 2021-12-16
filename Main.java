@@ -53,13 +53,13 @@ public class Main {
 		
 		if(option == 1)	
 			return JOptionPane.showOptionDialog(null, bodyText, title, JOptionPane.YES_NO_CANCEL_OPTION, 
-												JOptionPane.PLAIN_MESSAGE, null, responses, 0);
+			JOptionPane.PLAIN_MESSAGE, null, responses, 0);
 		else if(option == 2)
 			return JOptionPane.showOptionDialog(null, bodyText, title, JOptionPane.YES_NO_OPTION, 
-					JOptionPane.PLAIN_MESSAGE, null, responses, 0);
+			JOptionPane.PLAIN_MESSAGE, null, responses, 0);
 		else 
 			return JOptionPane.showOptionDialog(null, bodyText, title, JOptionPane.YES_OPTION, 
-					JOptionPane.PLAIN_MESSAGE, null, responses, 0);
+			JOptionPane.PLAIN_MESSAGE, null, responses, 0);
 	}	
 	
 }
