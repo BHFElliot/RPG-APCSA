@@ -1,3 +1,6 @@
+package game;
+//this whole class is basically just getters and setters for the players resources. It's very likely that at least one of these
+//goes completely unutilized.
 public class ResourceSheet {
 	
 	private int health;
@@ -12,7 +15,7 @@ public class ResourceSheet {
 		sanity = 100;
 		level = 1;
 	}
-	
+
 	public int getHealth() {
 		return health;
 	}
