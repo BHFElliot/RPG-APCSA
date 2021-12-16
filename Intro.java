@@ -1,6 +1,5 @@
 package game;
-/* this whole class is basically just getters and setters for the players resources. It's very likely that at least one of these
- * goes completely unutilized.
+/* The game's intro.
  * 
  * @Author: Elliot Miller
  * @Version: 1.0
