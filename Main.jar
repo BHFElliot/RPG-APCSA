@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	static Scanner in = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		System.out.println("Hi! Thank you for playing WORKING_TITLE");
+		create();
+	}
+	
+	private static void create() {
+		Player player = new Player();
+	}
+	
+
+
+}
