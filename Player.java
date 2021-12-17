@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 public class Player {
 	
 	Scanner in = new Scanner(System.in);
-	private String name;
-	private char gender;
+	public String name;
+	public char gender;
 	
 	public Player() {
 		create();
