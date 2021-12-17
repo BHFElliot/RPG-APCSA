@@ -3,7 +3,7 @@ package game;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
-/* This is program allows us to create a player object..
+/* This is program allows us to create a player object.
  * 
  * @Author: Elliot Miller
  * @Version: 3.01
@@ -46,12 +46,11 @@ public class Player {
 		name = JOptionPane.showInputDialog("Input a character name please");
 		String genders[] = {"Male", "Female", "Other"}; //these are the options for the gender selecting window.
 		
-		while(name == null ||name.equals("")) {
-			System.out.println("You can't name your character nothing!");
-			name = JOptionPane.showInputDialog("Input a character name please");
+		while(name == null || name.equals("")) {
+			name = JOptionPane.showInputDialog("Input a character name please\nYou can't name your character nothing!");
 		}
 		
-		int characterGender = Main.optionDialog("Input the character's gender please.", "Character Creator", 2, genders);
+		int characterGender = Printers.optionDialog("Input the character's gender please.", "Character Creator", 2, genders);
 				//JOptionPane.showOptionDialog (null, "Input the character's gender please.", "Character Creator", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, genders, 0);
 		
 		//the non null parameters are (in order): The message in the window, the window title, how many buttons there are, the symbol next to the question, and the words on the buttons.
@@ -69,7 +68,7 @@ public class Player {
 	/*this is basically the same thing as the last window, although the main difference is that selecting no starts the whole process over again. 
 	Forcing the player to hard reset if they want to change their character's name and gender is really annoying for the user.*/
 	private void confirm() {
-		if (Main.optionDialog("You've selected: " + name + " with gender: " + gender + "\nIs this ok?", "confirmation", 2, null) == 0)
+		if (Printers.optionDialog("You've selected: " + name + " with gender: " + gender + "\nIs this ok?", "confirmation", 2, null) == 0)
 			System.out.println("good luck!");
 		else
 			create();
