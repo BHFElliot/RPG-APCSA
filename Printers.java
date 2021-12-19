@@ -17,10 +17,10 @@ public class Printers {
 		}
 	}
 	
-	public static void printSleep(int a, String b) {
-		System.out.println(b);
+	public static void printSleep(int sleepTimeMS, String text) {
+		System.out.println(text);
 		try {
-			Thread.sleep(a);
+			Thread.sleep(sleepTimeMS);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -33,16 +33,20 @@ public class Printers {
 	}
 
 	//creates an option window.
-	public static int optionDialog(String bodyText, String title, int option, String[]responses) {
+	public static int optionDialog(String bodyText, String title, int options, String[]responses) {
 		
-		if(option == 1)	
+		if(options == 1)	
 			return JOptionPane.showOptionDialog(null, bodyText, title, JOptionPane.YES_NO_CANCEL_OPTION, 
 			JOptionPane.PLAIN_MESSAGE, null, responses, 0);
-		else if(option == 2)
+		else if(options == 2)
 			return JOptionPane.showOptionDialog(null, bodyText, title, JOptionPane.YES_NO_OPTION, 
 			JOptionPane.PLAIN_MESSAGE, null, responses, 0);
 		else 
 			return JOptionPane.showOptionDialog(null, bodyText, title, JOptionPane.YES_OPTION, 
 			JOptionPane.PLAIN_MESSAGE, null, responses, 0);
 	}	
+	
+	public static void messageWindow(String bodyText, String title) {
+		JOptionPane.showMessageDialog(null, bodyText, title, JOptionPane.PLAIN_MESSAGE);
+	}
 }
