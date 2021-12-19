@@ -1,10 +1,13 @@
 package game;
-/* The game's intro.
+
+import java.util.Random;
+
+/* This class contains the game's intro, which is the main branching point for the different paths.
  * 
  * @Author: Elliot Miller
  * @Version: 1.0
  * @Since: 12-16-21
- */
+ */ 
 public class Intro{
 
   public static void backStory() {
@@ -20,8 +23,8 @@ public class Intro{
 	  if(a) {
 		  Printers.printSleep(2000, "You begin to remember what happened before you woke up.");
 		  Printers.printSleep(2500, "\"Of course! I must've slipped and fell when I was checking out that cave.\"");
-		  Printers.printSleep(4000, "Thankfully, you have an emergency kit on you. "
-		  							+ "This consists of your phone, one day's worth of food and water, and a compass.");
+		  Printers.printSleep(4000, "Thankfully, you still have your backpack on you, "
+		  							+ "containing your phone, a day's worth of food and water, and a compass.");
 		  Printers.printSleep(3000, "You reach into your bag and pull out your phone. "
 		  							+ "Do you want to turn the flashlight on?");
 		  flashlightChoice();
@@ -39,10 +42,8 @@ public class Intro{
   private static void darkness() {
 	  Printers.printSleep(3000, "You've seen enough horror movies to know no good can come from being alone in caves. This is probably for the best.");
 	  Printers.printSleep(3000, "You stumble around the cave, feeling around for any sort of exit and trying your best to avoid any additional falls.");
+	  Printers.printSleep(1500, "Suddenly, your finger strikes something...");
 	  
-  }
-  
-  private static void light() {
 	  
   }
   
@@ -60,19 +61,25 @@ public class Intro{
 	  switch(Printers.optionDialog("Should I turn my flashlight on?", null, 1, new String[]{"Of course! I can't get out of here without any light.","No way. Who knows what could be lurking down here?"})) {
 	  	case 0: 
 	  		Printers.printSleep(2000, "You go to turn on your phone, and...");
-	  		if ((int) (Math.random()*2) == 1) {
-	  			Printers.printSleep(1000, "It's dead");
+	  		if (new Random().nextInt(2) == 1) {
+	  			Printers.printSleep(1000, "It's dead.");
 	  			darkness();
 	  		}	
 	  		else {
-	  			Printers.printSleep(2000, "The whole cave is illuminated!");
-	  			light();
+	  			lightEvents();
 	  		}	
 	  		break;
 	  	case 1: 
 	  		Main.playerSheet.addSanity(-5); 
-	  		darkness();
+	  		lightEvents();
 	  }
   }
-
+  
+  //random events, should be mostly out of the player's control
+  private static void lightEvents() {
+	  if (new Random().nextInt(2) == 1)
+		  CivPath.begin();
+	  else
+		  BioPath.begin();
+  }
 } 
