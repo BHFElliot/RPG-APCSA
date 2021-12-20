@@ -1,86 +1,87 @@
 package game;
 
-import java.util.Random;
+import java.util.Scanner;
 
-/* This class contains the game's intro, which is the main branching point for the different paths.
+import javax.swing.JOptionPane;
+/* This is program allows us to create a player object.
  * 
  * @Author: Elliot Miller
- * @Version: 1.0
- * @Since: 12-16-21
- */ 
-public class Intro{
+ * @Version: 3.01
+ * @Since: 12-15-21
+ */
+public class Player {
+	
+	Scanner in = new Scanner(System.in);
+	public String name;
+	public char gender;
+	
+	public Player() {
+		create();
+	}
+	
+	public Player(String a, char b) {
+		name = a;
+		gender = b;
+		confirm();
+	}
+	//below are the getters and setters for gender and name. These can only be invoked by special events.
+	public char getGender() {
+		return gender;
+	}
+	
+	public void setGender(char sex) {
+		gender = sex;
+	}
+	
+	public String getname() {
+		return name;
+	}
 
-  public static void backStory() {
-	System.out.println("\n");
-    Printers.printSleep(2000, "You awake to the sound of water droplets pattering around you.");
-    Printers.printSleep(3500, "A breeze of cold air brings you to. You open your eyes only to find yourself completely enshrouded in darkness.");
-    Printers.printSleep(2250,"As you come to, you begin to remember how you got here.");
-
-    awakenChoice();
-  }
-  
-  //this is the backstory and allows the player to make a VERY important decision about what path they want to go down.
-  private static void introPartOne(boolean a) {
-	  if(a) {
-		  Printers.printSleep(2000, "You begin to remember what happened before you woke up.");
-		  Printers.printSleep(2500, "\"Of course! I must've slipped and fell when I was checking out that cave.\"");
-		  Printers.printSleep(4000, "Thankfully, you still have your backpack on you, "
-		  							+ "containing your phone, a day's worth of food and water, and a compass.");
-		  Printers.printSleep(3000, "You reach into your bag and pull out your phone. "
-		  							+ "Do you want to turn the flashlight on?");
-		  flashlightChoice();
-	  }
-	  else {
-		  Printers.printSleep(2000, "You begin to remember what happened before you woke up.");
-		  Printers.printSleep(4000, "\"Of course! I must've been out for one of my solo cave walks when I got tired and took a nap in this crevace.\"");
-		  Printers.printSleep(3000, "You feel around your pockets and find your phone. Do you try and use the flashlight feature to illuminate your surroundings?");
-		  flashlightChoice();
-	  }
-	  
-	 
-  }
-  
-  private static void darkness() {
-	  Printers.printSleep(3000, "You've seen enough horror movies to know no good can come from being alone in caves. This is probably for the best.");
-	  Printers.printSleep(3000, "You stumble around the cave, feeling around for any sort of exit and trying your best to avoid any additional falls.");
-	  Printers.printSleep(1500, "Suddenly, your finger strikes something...");
-	  
-	  
-  }
-  
-  //Printers.printSleep(2000,""); this is what I'm using for copy and pasting. Hopefully it's been removed by the time I turn this in.
-  
-  //all of the players choices. There are going to be a lot of these.
-  private static void awakenChoice() {
-	  switch(Printers.optionDialog("Wasn't I...", null, 1, new String[]{"Going spleunking?","Taking a nap alone in a dark cave?"})) {
-	  	case 0: introPartOne(true); break;
-	  	case 1: Main.playerSheet.addSanity(-10); introPartOne(false); break;
-	  }
-  }
-  
-  private static void flashlightChoice() {
-	  switch(Printers.optionDialog("Should I turn my flashlight on?", null, 1, new String[]{"Of course! I can't get out of here without any light.","No way. Who knows what could be lurking down here?"})) {
-	  	case 0: 
-	  		Printers.printSleep(2000, "You go to turn on your phone, and...");
-	  		if (new Random().nextInt(2) == 1) {
-	  			Printers.printSleep(1000, "It's dead.");
-	  			darkness();
-	  		}	
-	  		else {
-	  			lightEvents();
-	  		}	
-	  		break;
-	  	case 1: 
-	  		Main.playerSheet.addSanity(-5); 
-	  		lightEvents();
-	  }
-  }
-  
-  //random events, should be mostly out of the player's control
-  private static void lightEvents() {
-	  if (new Random().nextInt(2) == 1)
-		  CivPath.begin();
-	  else
-		  BioPath.begin();
-  }
-} 
+	public void setName(String newName) {
+		name = newName;
+	}
+	
+	//this monster of a method is basically a constructor
+	private void create() {
+		name = JOptionPane.showInputDialog("Input a character name please");
+		String genders[] = {"Male", "Female", "Other"}; //these are the options for the gender selecting window.
+		
+		while(name == null || name.equals("")) {
+			name = JOptionPane.showInputDialog("Input a character name please\nYou can't name your character nothing!");
+		}
+		
+		int characterGender = Printers.optionDialog("Input the character's gender please.", "Character Creator", 2, genders);
+				//JOptionPane.showOptionDialog (null, "Input the character's gender please.", "Character Creator", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, genders, 0);
+		
+		//the non null parameters are (in order): The message in the window, the window title, how many buttons there are, the symbol next to the question, and the words on the buttons.
+		switch(characterGender) {
+			case 0: gender = 'M';
+			break;
+			case 1: gender = 'F';
+			break;
+			case 2: gender = 'O';
+			break;
+		}
+		confirm();
+		
+	}
+	/*this is basically the same thing as the last window, although the main difference is that selecting no starts the whole process over again. 
+	Forcing the player to hard reset if they want to change their character's name and gender is really annoying for the user.*/
+	private void confirm() {
+		if (Printers.optionDialog("You've selected: " + name + " with gender: " + gender + "\nIs this ok?", "confirmation", 2, null) == 0)
+			System.out.println("good luck!");
+		else
+			create();
+	}
+	
+	//this is pretty self-explanatory. If the player makes enough mistakes, just like real life, they die.
+	public static void death() {
+		System.out.println("You Died.");
+		Main.playerSheet.setEnergy(0);
+		Main.playerSheet.setHealth(0);
+		Main.playerSheet.setEnergy(0);
+		ResourceDisplay.death();
+		System.exit(0);
+	}
+	
+}
