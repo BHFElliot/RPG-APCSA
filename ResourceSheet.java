@@ -39,7 +39,7 @@ public class ResourceSheet {
 	}
 	
 	public int getEnergy() {
-		return health;
+		return energy;
 	}
 	
 	public void addEnergy(int a) {
@@ -49,6 +49,8 @@ public class ResourceSheet {
 		else if (energy < 0)
 			energy = 0;
 		ResourceDisplay.updateText();
+		if (energy <= 0)
+			Player.death();
 	}
 	
 	public void setEnergy(int a) {
@@ -95,4 +97,3 @@ public class ResourceSheet {
 	}
 
 }
-
