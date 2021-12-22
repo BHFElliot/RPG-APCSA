@@ -8,7 +8,10 @@ import javax.swing.JOptionPane;
  * @Since: 12-17-21
  */
 public class Printers {
+	
 	//these methods are just me not wanting to look at 1000 try catch statements every time I use Thread.sleep().
+	//also It's easier to have print and sleep in the same method rather than doing two lines and all these methods
+	//just print and then sleep.
 	public static void sleep(int a) {
 	    try {
 			Thread.sleep(a);
@@ -34,6 +37,7 @@ public class Printers {
 			e.printStackTrace();
 		}
 	}
+	
 	//prints a bunch of times lol
 	public static void clearConsole() {
 		for(int i = 0; i < 10; i++) {
@@ -67,11 +71,19 @@ public class Printers {
 			return JOptionPane.showOptionDialog(null, bodyText, null, JOptionPane.YES_OPTION, 
 			JOptionPane.PLAIN_MESSAGE, null, responses, 0);
 	}	
+	
+	//creates a yes/no option window with no title
+	public static int optionDialog(String bodyText, String[]responses) {
+			return JOptionPane.showOptionDialog(null, bodyText, null, JOptionPane.YES_NO_OPTION, 
+			JOptionPane.PLAIN_MESSAGE, null, responses, 0);
+	}
+	
 	//creates a message window (holds information and has only one option)
 	public static void messageWindow(String bodyText, String title) {
 		JOptionPane.showMessageDialog(null, bodyText, title, JOptionPane.PLAIN_MESSAGE);
 	}
 	
+	//prints an ascii art saying prologue, act one, or act two
 	public static void printAct(int a) {
 		switch(a) {
 		case 0:
