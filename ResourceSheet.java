@@ -14,6 +14,7 @@ public class ResourceSheet {
 	private int sanity;
 	private int level;
 	private int experience = 0;
+	private String playerPosition = "Start";
 	
 	public ResourceSheet(Player a) {
 		health = 10;
@@ -95,5 +96,14 @@ public class ResourceSheet {
 			level++;
 		ResourceDisplay.updateText();
 	}
+	
+	public String getPlayerPosition() {
+		return playerPosition;
+	}
+	
+	public void setPlayerPosition(String a) {
+		playerPosition = a;
+	}
 
 }
+
