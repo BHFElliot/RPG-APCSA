@@ -21,6 +21,7 @@ public class Main {
 		playerSheet = new ResourceSheet(player);	
 		new ResourceDisplay();
 		Intro.backStory();
+		//CivPath.begin();
 	}
 	
 	//asks the player if they want to make a custom character.
