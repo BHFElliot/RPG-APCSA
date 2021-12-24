@@ -1,13 +1,14 @@
 package game;
 
 import javax.swing.JOptionPane;
-/* This contains all methods necessary to printing story and events to the console and creating windows 
- * with options for players.
- * @Author: Elliot Miller
- * @Version: 1.0
- * @Since: 12-17-21
- */
+
 public class Printers {
+	/* This contains all methods necessary to printing story and events to the console and creating windows 
+	 * with options for players.
+	 * @Author: Elliot Miller
+	 * @Version: 1.0
+	 * @Since: 12-17-21
+	 */
 	
 	//these methods are just me not wanting to look at 1000 try catch statements every time I use Thread.sleep().
 	//also It's easier to have print and sleep in the same method rather than doing two lines and all these methods
@@ -81,6 +82,11 @@ public class Printers {
 	//creates a message window (holds information and has only one option)
 	public static void messageWindow(String bodyText, String title) {
 		JOptionPane.showMessageDialog(null, bodyText, title, JOptionPane.PLAIN_MESSAGE);
+	}
+	
+	public static void ellipsis(int numDots) {
+		for (int i = 0; i < numDots; i++)
+			printSleep(750,".");
 	}
 	
 	//prints an ascii art saying prologue, act one, or act two
