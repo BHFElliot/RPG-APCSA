@@ -3,13 +3,15 @@ package game;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
-/* This is program allows us to create a player object.
- * 
- * @Author: Elliot Miller
- * @Version: 3.01
- * @Since: 12-15-21
- */
+
 public class Player {
+	
+	/* This is program allows us to create a player object.
+	 * 
+	 * @Author: Elliot Miller
+	 * @Version: 3.01
+	 * @Since: 12-15-21
+	 */
 	
 	Scanner in = new Scanner(System.in);
 	public String name;
