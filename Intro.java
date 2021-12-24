@@ -2,14 +2,14 @@ package game;
 
 import java.util.Random;
 
-/* This class contains the game's intro, which is the main branching point for the different paths.
- * 
- * @Author: Elliot Miller
- * @Version: 1.0
- * @Since: 12-16-21
- */ 
-public class Intro{
 
+public class Intro{
+  /* This class contains the game's intro, which is the main branching point for the different paths.
+  * 
+  * @Author: Elliot Miller
+  * @Version: 1.0
+  * @Since: 12-16-21
+  */ 
   public static void backStory() {
 	System.out.println("\n");
     Printers.printAct(0);
@@ -55,27 +55,18 @@ public class Intro{
 		  Printers.printlnSleep(3000, "You reach into your bag and pull out your phone. "
 		  							+ "Do you want to turn the flashlight on?");
 		  flashlightChoice();
-	  }
-	  else {
+	  } else {
 		  Printers.printlnSleep(2000, "You begin to remember what happened before you woke up.");
 		  Printers.printlnSleep(4000, "\"Of course! I must've been out for one of my solo cave walks when I got tired and took a nap in this crevace.\"");
 		  Printers.printlnSleep(3000, "You feel around your pockets and find your phone. Do you try and use the flashlight feature to illuminate your surroundings?");
 		  flashlightChoice();
 	  }
-	  
-	 
   }
   
   public static void darkness() {
 	  Printers.printlnSleep(3000, "You've seen enough horror movies to know no good can come from being alone in caves. This is probably for the best.");
 	  Printers.printlnSleep(3000, "You stumble around the cave, feeling around for any sort of exit and trying your best to avoid any additional falls.");
-	  Printers.printlnSleep(1500, "Suddenly, your finger strikes something...");
-	  
-	  
+	  Printers.printlnSleep(1500, "Suddenly, your finger strikes something...");  
   }
-  
-  //Printers.printSleep(2000,""); this is what I'm using for copy and pasting. Hopefully it's been removed by the time I turn this in.
-  
-
 
 } 
