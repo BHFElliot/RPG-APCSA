@@ -4,21 +4,23 @@ import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-/* This class creates a window displaying all of the player's resources.
- * @Author: Elliot Miller
- * @Verison 1.0
- * @Since:12-18-21
- */
-public class ResourceDisplay extends JFrame{
 
-	private static final long serialVersionUID = 1L;
+public class ResourceDisplay extends JFrame{
+	
+	/* This class creates a window displaying all of the player's resources.
+	 * @Author: Elliot Miller
+	 * @Verison 1.0
+	 * @Since:12-18-21
+	 */
+	
+	private static final long serialVersionUID = -593004922448245954L;
 	static JLabel health = new JLabel();
 	static JLabel sanity = new JLabel();
 	static JLabel info = new JLabel();
 	static JLabel energy = new JLabel();
 	
 	static Integer energyCount = Main.playerSheet.getEnergy();
-	static Integer healthCount = Main.playerSheet.getHealth();
+	static Double healthCount = Main.playerSheet.getHealth();
 	static Integer sanityCount = Main.playerSheet.getSanity();
 	
 	public ResourceDisplay() {
@@ -26,12 +28,10 @@ public class ResourceDisplay extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLayout(new FlowLayout());
+		this.setTitle("Resource Window");
 		
-		health.setText("Health: " + healthCount.toString());
-		health.setHorizontalAlignment(JLabel.LEFT);
-		sanity.setText("Sanity: " + sanityCount.toString());
-		info.setText(Main.player.getname() + ", " + Main.player.getGender());
-		energy.setText("Energy:" + energyCount.toString());
+		updateText();
+		updateInfo();
 		
 		this.add(health);
 		this.add(sanity);
