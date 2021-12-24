@@ -1,15 +1,17 @@
 package game;
 
-/* this whole class is basically just getters and setters for the players resources. It's very likely that at least one of these
- * goes completely unutilized.
- * 
- * @Author: Elliot Miller
- * @Version: 1.0
- * @Since: 12-15-21
- */
+
 public class ResourceSheet {
 	
-	private int health;
+	/* this whole class is basically just getters and setters for the players resources. It's very likely that at least one of these
+	 * goes completely unutilized.
+	 * 
+	 * @Author: Elliot Miller
+	 * @Version: 1.0
+	 * @Since: 12-15-21
+	 */	
+	
+	private double health;
 	private int energy;
 	private int sanity;
 	private int level;
@@ -23,18 +25,18 @@ public class ResourceSheet {
 		level = 1;
 	}
 
-	public int getHealth() {
+	public double getHealth() {
 		return health;
 	}
 	
-	public void addHealth(int a) {
+	public void addHealth(double a) {
 		health += a;
 		if (health > 10)
 			health = 10;
 		ResourceDisplay.updateText();
 	}
 	
-	public void setHealth(int a) {
+	public void setHealth(double a) {
 		health = a;
 		ResourceDisplay.updateText();
 	}
