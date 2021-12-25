@@ -2,40 +2,36 @@ package game;
 
 public class Settlement {
 	
-	/*This is the gameplay in the (first?) settlement
+	/**
+	 *The Settlment class is gameplay and dialogue in the town.
 	 * 
 	 *@Author: Elliot Miller
-	 *@Since: 12/22/21
+	 *@Since: 2021/12/22
 	 *@Version: 1.0
 	 *
 	 */
 	
 	public static boolean isHostile = Roll.silentRoll(1,2);
-	
+	public static boolean hasBeen = false;
 	public static void begin() {
+		hasBeen = true;
 		Printers.printlnSleep(3000,"After what felt like an eternity of walking, you finally "
-				+ "reach the end of the cramped tunnel you've been travelling through");
+				+ "reach the end of the cramped tunnel you've been travelling through.");
 		Printers.printlnSleep(2000, "On the other side, you spot a huge walled off area.");
 		Printers.printlnSleep(3000, "There's an entrance with a guard sitting right beside it, reading a book.");
-		switch (Printers.optionDialog("How do you want to get in?", new String[] {"Go talk to the guard.", "hop the fence."})) {
-		case 0: guard();
-		case 1: fenceHop();
-		}
-	}
-	
-	public static void guard() {
 		Printers.printlnSleep(2000, "You approach the guard and ask how you can get into the town.");
 		Printers.printlnSleep(1000, "The guard responds: \"Do you have a passport?\"");
 		Printers.printlnSleep(2000, "You tell the guard you might have an id, and reach for your wallet.");
-		if(Roll.roll(1, 3, "find your wallet"))
+		if(Roll.silentRoll(1, 3))
 			id();
 		else
 			noID();
 	}
 	
 	public static void id() {
+		Printers.printlnSleep(2000, "You find your id and hand it to the guard.");
 		Printers.printlnSleep(2000, "The guard takes a look at your id and hands it back to you.");
-		Printers.printlnSleep(2000, "\"Looks fine.\"");
+		Printers.printlnSleep(2000, "\"Not sure where this is from, but it looks fine.\"");
 		townSquare();
 	}
 	
@@ -47,19 +43,21 @@ public class Settlement {
 		townSquare();
 	}
 	
-	public static void fenceHop() {
-		
-	}
-	
 	public static void townSquare() {
-		Printers.printlnSleep(3000, "He signals you through and you enter the town. You see kids playing in the street and adults talking.");
+		Printers.printlnSleep(3000, "He signals you through and you enter the town. You see kids playind and adults watching, all dressed "
+				+ "in colonial garb.");
 		Printers.printlnSleep(2000, "There are a couple shops and a little town hall in the center of the town.");
 		Printers.printlnSleep(3000, "Your entrance doesn't go unnoticed for long. People slowly stop talking at start looking at you. After just a few "
 				+ "minutes, the town goes completely silent.");
+		
 		switch(Printers.optionDialog("You feel obligated to say something.", 
 		new String[] {"\"Does anyone know a way to get out of this cave?\"","\"Just passing through.\""})) {
-		case 0: followChoice(); break;
-		case 1: passingThrough(); break;
+		case 0: followChoice(); 
+		break;
+		case 1: Printers.printlnSleep(2500, "A look of dissapointment washes over the townsfolk.");
+		Caves.begin(); 
+		break;
+		
 		}
 	}
 	
@@ -75,13 +73,20 @@ public class Settlement {
 		} else {
 			if(isHostile)
 				hostileNoFollow();
-			else
-				passiveNoFollow();		
+			else {
+				Printers.printlnSleep(2500, "A look of dissapointment washes over the townsfolk.");
+				Printers.printlnSleep(2000, "\"So be it.\" The old man says with a tinge of sorrow in his voice.");
+				Printers.printlnSleep(2000, "The old man turns away from you and gestures towards the guard");
+				Caves.begin();	
+			}
 		}
 		
 	}
 	
 	public static void passiveFollow() {
+		Printers.printlnSleep(2000, "The old man's straight face turns to a hearty smile");
+		Printers.printlnSleep(2000, "\"Follow me into the town hall, young " + Main.player.genderString + ".");
+		Printers.printlnSleep(3000, "The old man sits you down in a room full of photographs, documents, and all sorts of artifacts.");
 		
 	}
 	
@@ -95,17 +100,6 @@ public class Settlement {
 		Printers.printlnSleep(2500,"You hear the guard move to block off the entrance and the old man retreats into the crowd.");
 		Printers.printlnSleep(1500, "Before you know it, there's a crowd of people descending on you.");
 		Player.death();
-	}
-	
-	public static void passiveNoFollow() {
-		Printers.printlnSleep(2500, "A look of dissapointment washes over the townsfolk.");
-		Printers.printlnSleep(2000, "\"So be it.\" The old man says with a tinge of sorrow in his voice.");
-		Printers.printlnSleep(2000,"The old man turns away from you and gestures towards the guard");
-		Printers.printlnSleep(2000,"The guard grabs your arm and leads you to the front gate.");
-	}
-	
-	public static void passingThrough() {
-		
 	}
 	
 }
