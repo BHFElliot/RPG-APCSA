@@ -1,32 +1,34 @@
+package game;
 
+
+public class House {
 	
-	/* This class contains the dialog for one of the 4 planned paths. I'd recommend playing before looking around here,
-	 * there most likely won't be anything special.
-	 * PS: I apologize for the length of classes in this but I figured for your sake I'd write some long classes without
-	 * having you jump in between 20 different classes for each path.
+	/** 
+	 * The House class contains the dialog that gets the player to go to the village and also the dialog for 
+	 * when the player comes back from the village.
 	 * 
 	 * @Author: Elliot Miller
 	 * @Version: 1.0
-	 * @Since: 12-18-21
+	 * @Since: 2021-12-18
 	 */
 	
 	public static void begin() {
-		Printers.printlnSleep(1500, "A beam of light streams out from the back.");
+		Printers.printlnSleep(1500, "You turn on the flashlight, and a beam of light streams out from the back.");
 		Printers.printlnSleep(3000, "After just a few minutes of looking for an exit, a dim light in the distance flickers on.");
 		approachChoice();
 		
 	}
 	
 	public static void directionChoice() {
-		if(Main.playerSheet.getPlayerPosition().equals("Shack")) {
-			switch(Printers.optionDialog("Where would you like to go?", new String[] {"I'm gonna head back to where I woke up.", "I'm gonna go towards that settlement."})) {
+		if(Main.playerSheet.getPlayerPosition()=='H') {
+			switch(Printers.optionDialog("Where would you like to go?", new String[] {"I'm gonna head back to where I woke up.", "I'm gonna go towards town."})) {
 			case 0: Printers.ellipsis(4);
-			Main.playerSheet.setPlayerPosition("Start"); 
+			Main.playerSheet.setPlayerPosition('S'); 
 			Printers.printlnSleep(1000,"There's nothing here.");
 			directionChoice();
 			break;
 			case 1: Printers.ellipsis(4);
-			Main.playerSheet.setPlayerPosition("Settlement");
+			Main.playerSheet.setPlayerPosition('T');
 			Settlement.begin();
 			break;
 
@@ -39,8 +41,8 @@
 			directionChoice();
 			break;
 			case 1: Printers.ellipsis(4);
-			Main.playerSheet.setPlayerPosition("Shack"); 
-			Printers.printlnSleep(2000, "The woman teases you for going in the wrong direction.");
+			Main.playerSheet.setPlayerPosition('H'); 
+			Printers.printlnSleep(2000, "The woman looks at you funny for going in the wrong direction.");
 			directionChoice();
 			break;
 
@@ -66,40 +68,44 @@
 				"I'm strong. I'm not gonna give up.", "Maybe I'll just go to sleep for a minute."};
 		int counter = 0;
 		while(Printers.optionDialog("Would you like to approach the light now?", 1, new String[]{"I guess I have no other choice.", increasingSeverity[counter]}) != 0) {
-			for(int i = 0; i < 4; i++) {
-				Printers.printSleep(750, ".");
-			}
+			Printers.ellipsis(3);
 			
 			switch(Main.playerSheet.getEnergy()) {
-			case 100: Printers.printlnSleep(1250," You're getting hungry."); 
-			Main.playerSheet.addEnergy(-20);
-			Main.playerSheet.addSanity(-5);
+			case 100: 
+				Printers.printlnSleep(1250," You're getting hungry."); 
+				Main.playerSheet.addEnergy(-20);
+				Main.playerSheet.addSanity(-5);
 			break;
 			
-			case 80: Printers.printlnSleep(1250," It's been a long time since you've last eaten."); 
-			Main.playerSheet.addEnergy(-20);
-			Main.playerSheet.addSanity(-5);
+			case 80: 
+				Printers.printlnSleep(1250," It's been a long time since you've last eaten."); 
+				Main.playerSheet.addEnergy(-20);
+				Main.playerSheet.addSanity(-5);
 			break;
 			
-			case 60: Printers.printlnSleep(1250," Hunger pangs are setting in."); 
-			Main.playerSheet.addEnergy(-20); 
-			Main.playerSheet.addSanity(-5);
+			case 60:
+				Printers.printlnSleep(1250," Hunger pangs are setting in."); 
+				Main.playerSheet.addEnergy(-20); 
+				Main.playerSheet.addSanity(-5);
 			break;
 			
-			case 40: Printers.printlnSleep(1250," It's been a very long time since you've last eaten."); 
-			Main.playerSheet.addEnergy(-20); 
-			Main.playerSheet.addSanity(-5);
+			case 40: 
+				Printers.printlnSleep(1250," It's been a very long time since you've last eaten."); 
+				Main.playerSheet.addEnergy(-20); 
+				Main.playerSheet.addSanity(-5);
 			break;
 			
-			case 20: Printers.printlnSleep(2000," You're getting cold and it's getting harder and harder to fight the urge to sleep."); 
-			Main.playerSheet.addEnergy(-19); 
-			Main.playerSheet.addSanity(-5);
+			case 20: 
+				Printers.printlnSleep(2000," You're getting cold and it's getting harder and harder to fight the urge to sleep."); 
+				Main.playerSheet.addEnergy(-19); 
+				Main.playerSheet.addSanity(-5);
 			break;
 			
-			case 1: Printers.printlnSleep(2000," Goodnight."); 
-			Main.playerSheet.addEnergy(-2); 
-			Player.death();
-			break;
+			case 1: 
+				Printers.printlnSleep(2000," Goodnight."); 
+				Main.playerSheet.addEnergy(-2); 
+				Player.death();
+				break;
 			}
 			counter++;
 		}
@@ -140,13 +146,15 @@
 		switch(Printers.optionDialog("What would you like to say?", new String[] {"Town?", "I'm trying to get out of this cave."})) {
 		case 0: Printers.printlnSleep(3000,"\"There's a settlement a couple thousand feet up that way. The direction you came from is"
 				+ " a dead end, I'm not entirely sure where you came from.\""); break;
-		case 1: Printers.printlnSleep(3000, "\"The surface? It's possible. There's a town up that way that might be able "
+		case 1: 
+			Printers.printlnSleep(3000, "\"The surface? It's possible. There's a town up that way that might be able "
 				+ "to give you some directions.\"");
 		}
 		Printers.printlnSleep(2000, "Before you get up, she hands you an oil lamp.\n\"You'll need this.\" She says.");
-		Main.playerSheet.setPlayerPosition("Shack");
+		Main.playerSheet.setPlayerPosition('H');
 		directionChoice();
 	}
 
 }
+
 
