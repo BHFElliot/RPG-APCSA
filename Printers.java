@@ -3,11 +3,12 @@ package game;
 import javax.swing.JOptionPane;
 
 public class Printers {
-	/* This contains all methods necessary to printing story and events to the console and creating windows 
+	/**
+	 * The printer class contains all methods necessary to printing story and events to the console and creating windows 
 	 * with options for players.
 	 * @Author: Elliot Miller
 	 * @Version: 1.0
-	 * @Since: 12-17-21
+	 * @Since: 2021-12-17
 	 */
 	
 	//these methods are just me not wanting to look at 1000 try catch statements every time I use Thread.sleep().
@@ -24,7 +25,7 @@ public class Printers {
 	public static void printlnSleep(int sleepTimeMS, String text) {
 		System.out.println(text);
 		try {
-			Thread.sleep(sleepTimeMS);
+			Thread.sleep(sleepTimeMS + Main.readingSpeed);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -33,7 +34,7 @@ public class Printers {
 	public static void printSleep(int sleepTimeMS, String text) {
 		System.out.print(text);
 		try {
-			Thread.sleep(sleepTimeMS);
+			Thread.sleep(sleepTimeMS + Main.readingSpeed);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
