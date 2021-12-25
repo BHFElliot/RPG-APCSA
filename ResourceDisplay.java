@@ -5,15 +5,19 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+@SuppressWarnings("serial")
 public class ResourceDisplay extends JFrame{
 	
-	/* This class creates a window displaying all of the player's resources.
+	/**
+	 * The ResourceDisplay class creates a window displaying all of the player's resources.
+	 * This is old and no longer has a use in the current build of the game. It's been kept in just because it took me so much work to make.
+	 * If you'd like to see it in action, new ResourceDisplay(); will bring it up in its former glory.
 	 * @Author: Elliot Miller
 	 * @Verison 1.0
-	 * @Since:12-18-21
+	 * @Since:2021-12-18
 	 */
 	
-	private static final long serialVersionUID = -593004922448245954L;
+
 	static JLabel health = new JLabel();
 	static JLabel sanity = new JLabel();
 	static JLabel info = new JLabel();
