@@ -54,7 +54,7 @@ public class Settlement {
 		new String[] {"\"Does anyone know a way to get out of this cave?\"","\"Just passing through.\""})) {
 		case 0: followChoice(); 
 		break;
-		case 1: Printers.printlnSleep(2500, "A look of dissapointment washes over the townsfolk.");
+		case 1: Printers.printlnSleep(2500, "A look of disappointment washes over the townsfolk.");
 		Caves.begin(); 
 		break;
 		
@@ -74,7 +74,7 @@ public class Settlement {
 			if(isHostile)
 				hostileNoFollow();
 			else {
-				Printers.printlnSleep(2500, "A look of dissapointment washes over the townsfolk.");
+				Printers.printlnSleep(2500, "A look of disappointment washes over the townsfolk.");
 				Printers.printlnSleep(2000, "\"So be it.\" The old man says with a tinge of sorrow in his voice.");
 				Printers.printlnSleep(2000, "The old man turns away from you and gestures towards the guard");
 				Caves.begin();	
@@ -87,7 +87,14 @@ public class Settlement {
 		Printers.printlnSleep(2000, "The old man's straight face turns to a hearty smile");
 		Printers.printlnSleep(2000, "\"Follow me into the town hall, young " + Main.player.genderString + ".");
 		Printers.printlnSleep(3000, "The old man sits you down in a room full of photographs, documents, and all sorts of artifacts.");
-		
+		Printers.printlnSleep(2000, "He says: \"I'll lead you up to the surface, but I need you to do something for me as well.\"");
+		Printers.printlnSleep(1000, "\"Every exit to this cave is sealed off.\"");
+		Printers.printlnSleep(2000, "\"However, they open whenever a tour comes through.\"");
+		Printers.printlnSleep(3000, "\"I need you to sneak into a tour and when you leave, go tell someone important that we're down here.\"");
+		Printers.printlnSleep(2000, "\"You see, we've been down here for generations.\"");
+		Printers.printlnSleep(3000, "\"Our town had a religious split. Most of the citizens followed were in one sect, while we were in the other\"");
+		Printers.printlnSleep(3000, "\"Finally, after years of abuse and harassment, they drove us into these caves and sealed up all the exits.\"");
+		Printers.printlnSleep(2000, "\"It's been well over a hundred years, but the townspeople on the surface have decided to keep us down here");
 	}
 	
 	public static void hostileFollow() {
@@ -103,4 +110,3 @@ public class Settlement {
 	}
 	
 }
-
