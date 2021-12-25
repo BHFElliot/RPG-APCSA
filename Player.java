@@ -1,21 +1,21 @@
 package game;
 
-import java.util.Scanner;
-
 import javax.swing.JOptionPane;
 
 public class Player {
 	
-	/* This is program allows us to create a player object.
+	/**
+	 * The Player class allows us to create a player object, as well as win the game, and die.
 	 * 
 	 * @Author: Elliot Miller
 	 * @Version: 3.01
-	 * @Since: 12-15-21
+	 * @Since: 2021-12-15
 	 */
 	
 	Scanner in = new Scanner(System.in);
 	public String name;
 	public char gender;
+	public String genderString;
 	
 	public Player() {
 		create();
@@ -58,10 +58,13 @@ public class Player {
 		//the non null parameters are (in order): The message in the window, the window title, how many buttons there are, the symbol next to the question, and the words on the buttons.
 		switch(characterGender) {
 			case 0: gender = 'M';
+			genderString = "Man";
 			break;
 			case 1: gender = 'F';
+			genderString = "Lady";
 			break;
 			case 2: gender = 'O';
+			genderString = "One";
 			break;
 		}
 		confirm();
@@ -83,6 +86,13 @@ public class Player {
 		Main.playerSheet.setHealth(0);
 		Main.playerSheet.setEnergy(0);
 		ResourceDisplay.death();
+		System.exit(0);
+	}
+	
+	public static void end() {
+		Printers.printlnSleep(2000, "Thanks for playing spelunk!");
+		Printers.printlnSleep(3000, "If this is your first win, I highly encourage you play again. There's a lot of stuff you haven't seen.");
+		Printers.printlnSleep(2000, "Goodbye!");
 		System.exit(0);
 	}
 	
