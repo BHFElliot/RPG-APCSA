@@ -5,10 +5,11 @@ import java.util.Random;
 
 public class Roll {
 
-	/*This class prints the info a player would need to know about any roll (the chance and what they're rolling for)
-	 * and also does the calculations
+	/**
+	 * The Roll class handles and sometimes prints random chance.
+	 * 
 	 * @Author: Elliot Miller
-	 * @Since: 12-22-21
+	 * @Since: 2021-12-22
 	 * @Version: 1.0
 	 */
 	
