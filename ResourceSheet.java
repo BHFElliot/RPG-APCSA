@@ -3,12 +3,13 @@ package game;
 
 public class ResourceSheet {
 	
-	/* this whole class is basically just getters and setters for the players resources. It's very likely that at least one of these
-	 * goes completely unutilized.
+	/** 
+	 * The ResourceSheet class contains getters and setters for the players resources. 
+	 * This is no longer in use for the most part. This was made when the game was being taken in a different, more survival oriented direction.
 	 * 
 	 * @Author: Elliot Miller
 	 * @Version: 1.0
-	 * @Since: 12-15-21
+	 * @Since: 2021-12-15
 	 */	
 	
 	private double health;
@@ -16,8 +17,8 @@ public class ResourceSheet {
 	private int sanity;
 	private int level;
 	private int experience = 0;
-	private String playerPosition = "Start";
-	
+	private char playerPosition = 'S';
+	//S = start, H = house/shack, T = town/village/settlement, C = caves
 	public ResourceSheet(Player a) {
 		health = 10;
 		energy = 100;
@@ -99,13 +100,12 @@ public class ResourceSheet {
 		ResourceDisplay.updateText();
 	}
 	
-	public String getPlayerPosition() {
+	public char getPlayerPosition() {
 		return playerPosition;
 	}
 	
-	public void setPlayerPosition(String a) {
+	public void setPlayerPosition(char a) {
 		playerPosition = a;
 	}
 
 }
-
