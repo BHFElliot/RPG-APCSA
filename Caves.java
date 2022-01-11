@@ -8,16 +8,16 @@ public class Caves {
 	 * @version 1.0
 	 * @since 2021-12-21
 	 */
-	public static void begin() {
+	public static void begin(boolean a) {
 		Main.playerSheet.setPlayerPosition('C');
 		Printers.printlnSleep(2000, "The guard grabs your arm and leads you to the front gate.");
 		Printers.printlnSleep(3000, "Once you're there, the guard grunts and points to a new passageway all the way on the other side of the village.");
 		Printers.printlnSleep(1500, "The guard moves to block you from reentering the village.");
 		Printers.printlnSleep(2000, "You flick your phone flashlight back on and see a narrow passageway.");
-		fall();		
+		fall(a);		
 	}
 	
-	public static void fall() {
+	public static void fall(boolean a) {
 		Printers.printlnSleep(3000, "You take on step in and immediately trip and start tumbling down a steep slope.");
 		Printers.printlnSleep(3000, "Suddenly, you fly headfirst out of the tunnel and into a huge pool of water. ");
 		Printers.printlnSleep(1500, "You swim to the surface and gasp for air.");
@@ -50,7 +50,7 @@ public class Caves {
 				Printers.printlnSleep(2000, "After a short wait, you push the door open yourself.");
 				Printers.printlnSleep(2000, "The sun is overwhelming, although in a good way.");
 				Printers.printlnSleep(2000, "You made it.");
-				Player.end();
+				Player.end(a);
 				break;
 			}
 		case 1:
@@ -60,7 +60,7 @@ public class Caves {
 			Printers.printlnSleep(2000, "The tour guide pushes the door open.");
 			Printers.printlnSleep(2000, "The sun is overwhelming, although in a good way.");
 			Printers.printlnSleep(2000, "You made it.");
-			Player.end();
+			Player.end(a);
 			break;
 			
 		}
@@ -89,4 +89,3 @@ public class Caves {
 		Player.death();
 	}
 }
-
