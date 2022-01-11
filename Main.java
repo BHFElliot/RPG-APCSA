@@ -1,8 +1,5 @@
 package game;
 
-import java.util.Scanner;
-
-
 /** 
  * The Main class starts the game.
  * 
@@ -12,7 +9,6 @@ import java.util.Scanner;
  */
 public class Main {
 
-	static Scanner in = new Scanner(System.in);
 	//player and statsheets
 	public static Player player;
 	public static ResourceSheet playerSheet;
