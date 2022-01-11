@@ -1,7 +1,5 @@
 package game;
 
-import javax.swing.JOptionPane;
-
 public class Player {
 	
 	/**
@@ -12,7 +10,6 @@ public class Player {
 	 * @Since: 2021-12-15
 	 */
 	
-	Scanner in = new Scanner(System.in);
 	public String name;
 	public char gender;
 	public String genderString;
@@ -81,17 +78,14 @@ public class Player {
 	
 	//this is pretty self-explanatory. If the player makes enough mistakes, just like real life, they die.
 	public static void death() {
-		System.out.println("You Died.");
-		Main.playerSheet.setEnergy(0);
-		Main.playerSheet.setHealth(0);
-		Main.playerSheet.setEnergy(0);
-		ResourceDisplay.death();
+		Printers.printlnSleep(1500,"You Died.");
 		System.exit(0);
 	}
 	
+	//This is the same thing as death except you win the game instead of dying
 	public static void end() {
 		Printers.printlnSleep(2000, "Thanks for playing spelunk!");
-		Printers.printlnSleep(3000, "If this is your first win, I highly encourage you play again. There's a lot of stuff you haven't seen.");
+		Printers.printlnSleep(3000, "If this is your first win, I highly encourage you play again. There's probably a lot of stuff you haven't seen.");
 		Printers.printlnSleep(2000, "Goodbye!");
 		System.exit(0);
 	}
