@@ -1,5 +1,7 @@
 package game;
 
+import javax.swing.JOptionPane;
+
 public class Player {
 	
 	/**
@@ -23,22 +25,6 @@ public class Player {
 		gender = b;
 		confirm();
 	}
-	//below are the getters and setters for gender and name. These can only be invoked by special events.
-	public char getGender() {
-		return gender;
-	}
-	
-	public void setGender(char sex) {
-		gender = sex;
-	}
-	
-	public String getname() {
-		return name;
-	}
-
-	public void setName(String newName) {
-		name = newName;
-	}
 	
 	//this monster of a method is basically a constructor
 	private void create() {
@@ -47,13 +33,10 @@ public class Player {
 		
 		while(name == null || name.equals("")) {
 			name = JOptionPane.showInputDialog("Input a character name please\nYou can't name your character nothing!");
-		}
-		
-		int characterGender = Printers.optionDialog("Input the character's gender please.", "Character Creator", 2, genders);
-				//JOptionPane.showOptionDialog (null, "Input the character's gender please.", "Character Creator", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, genders, 0);
+		}		
 		
 		//the non null parameters are (in order): The message in the window, the window title, how many buttons there are, the symbol next to the question, and the words on the buttons.
-		switch(characterGender) {
+		switch(Printers.optionDialog("Input the character's gender please.", "Character Creator", 2, genders)) {
 			case 0: gender = 'M';
 			genderString = "Man";
 			break;
@@ -78,16 +61,23 @@ public class Player {
 	
 	//this is pretty self-explanatory. If the player makes enough mistakes, just like real life, they die.
 	public static void death() {
-		Printers.printlnSleep(1500,"You Died.");
+		System.out.println("You Died.");
+		Main.playerSheet.setEnergy(0);
+		Main.playerSheet.setHealth(0);
+		Main.playerSheet.setEnergy(0);
+		ResourceDisplay.death();
 		System.exit(0);
 	}
 	
-	//This is the same thing as death except you win the game instead of dying
-	public static void end() {
-		Printers.printlnSleep(2000, "Thanks for playing spelunk!");
-		Printers.printlnSleep(3000, "If this is your first win, I highly encourage you play again. There's probably a lot of stuff you haven't seen.");
-		Printers.printlnSleep(2000, "Goodbye!");
-		System.exit(0);
+	public static void end(boolean a) {
+		if(!a) {
+			Printers.printlnSleep(2000, "Thanks for playing spelunk!");
+			Printers.printlnSleep(3000, "If this is your first win, I highly encourage you play again. There's a lot of stuff you haven't seen.");
+			Printers.printlnSleep(2000, "Goodbye!");
+			System.exit(0);
+		} else
+			Surface.help();
 	}
 	
 }
+
