@@ -13,12 +13,13 @@ public class Main {
 	public static Player player;
 	public static ResourceSheet playerSheet;
 	public static int readingSpeed;
+	public static boolean isDev;
 	
 	public static void main(String[] args) {
+		isDev = true;
 		player = characterCreate();
 		playerSheet = new ResourceSheet(player);	
-		//Start.backStory();
-		Settlement.begin();
+		Start.backStory();
 	}
 	
 	//asks the player if they want to make a custom character.
@@ -43,11 +44,5 @@ public class Main {
 		case 1: return new Player("Explorer", 'M');
 		}
 		return null;
-	}
-	
-	//this is not in use anymore, but has been kept in case a major change is made in the game later on.
-	public static void sanityExplanation() {
-		Printers.messageWindow("Certain events and decisions can raise or lower your sanity.\nCertain events also require a sanity check to pass,"
-				+ "\n meaning that if your sanity is too low you're locked out of a decision that a more mentally sound person would make.", null);
 	}
 }
