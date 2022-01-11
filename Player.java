@@ -62,10 +62,6 @@ public class Player {
 	//this is pretty self-explanatory. If the player makes enough mistakes, just like real life, they die.
 	public static void death() {
 		System.out.println("You Died.");
-		Main.playerSheet.setEnergy(0);
-		Main.playerSheet.setHealth(0);
-		Main.playerSheet.setEnergy(0);
-		ResourceDisplay.death();
 		System.exit(0);
 	}
 	
