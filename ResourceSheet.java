@@ -25,7 +25,7 @@ public class ResourceSheet {
 		sanity = 100;
 		level = 1;
 	}
-
+	//getters/setters, some (almost all) of which aren't being used anymore lol
 	public double getHealth() {
 		return health;
 	}
