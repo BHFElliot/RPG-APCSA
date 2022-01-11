@@ -24,27 +24,17 @@ public class Printers {
 	
 	public static void printlnSleep(int sleepTimeMS, String text) {
 		System.out.println(text);
-		try {
-			Thread.sleep(sleepTimeMS + Main.readingSpeed);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		if(!Main.isDev) 
+			sleep(sleepTimeMS+Main.readingSpeed);
+		 
+			
 	}
 	
 	public static void printSleep(int sleepTimeMS, String text) {
 		System.out.print(text);
-		try {
-			Thread.sleep(sleepTimeMS + Main.readingSpeed);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	//prints a bunch of times lol
-	public static void clearConsole() {
-		for(int i = 0; i < 10; i++) {
-			System.out.println();
-		}
+		if(!Main.isDev) 
+			sleep(sleepTimeMS+Main.readingSpeed);
+		
 	}
 
 	//creates an option window.
@@ -87,41 +77,6 @@ public class Printers {
 	
 	public static void ellipsis(int numDots) {
 		for (int i = 0; i < numDots; i++)
-			printSleep(750,".");
-	}
-	
-	//prints an ascii art saying prologue, act one, or act two
-	public static void printAct(int a) {
-		switch(a) {
-		case 0:
-			System.out.println("----------------------------------------------");
-			System.out.println("  ____            _                        \n"
-					+ " |  _ \\ _ __ ___ | | ___   __ _ _   _  ___ \n"
-					+ " | |_) | '__/ _ \\| |/ _ \\ / _` | | | |/ _ \\\n"
-					+ " |  __/| | | (_) | | (_) | (_| | |_| |  __/\n"
-					+ " |_|   |_|  \\___/|_|\\___/ \\__, |\\__,_|\\___|\n"
-					+ "                          |___/            ");
-			System.out.println("----------------------------------------------\n");
-
-			break;
-		case 1:
-			System.out.println("----------------------------------------------");
-			System.out.println("     _        _      ___              \n"
-					+ "    / \\   ___| |_   / _ \\ _ __   ___  \n"
-					+ "   / _ \\ / __| __| | | | | '_ \\ / _ \\ \n"
-					+ "  / ___ \\ (__| |_  | |_| | | | |  __/ \n"
-					+ " /_/   \\_\\___|\\__|  \\___/|_| |_|\\___|\n");
-			System.out.println("----------------------------------------------\n");
-			break;
-		case 2:
-			System.out.println("----------------------------------------------");
-			System.out.println("     _        _     _____               \n"
-					+ "    / \\   ___| |_  |_   _|_      _____  \n"
-					+ "   / _ \\ / __| __|   | | \\ \\ /\\ / / _ \\ \n"
-					+ "  / ___ \\ (__| |_    | |  \\ V  V / (_) |\n"
-					+ " /_/   \\_\\___|\\__|   |_|   \\_/\\_/ \\___/ ");
-			System.out.println("----------------------------------------------\n");
-		}
-		
+			printSleep(750 - Main.readingSpeed,".");
 	}
 }
