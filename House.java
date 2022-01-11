@@ -14,7 +14,7 @@ public class House {
 	
 	public static void begin() {
 		Printers.printlnSleep(1500, "You turn on the flashlight, and a beam of light streams out from the back.");
-		Printers.printlnSleep(3000, "After just a few minutes of looking for an exit, a dim light in the distance flickers on.");
+		Printers.printlnSleep(3000, "After a few minutes of looking for an exit, a dim light in the distance flickers on.");
 		approachChoice();
 		
 	}
@@ -117,17 +117,17 @@ public class House {
 		Printers.printlnSleep(1250, "You turn to the light and begin walking towards it.");
 		Printers.printlnSleep(3500,"After travelling down a seemingly endless passage of twists and turns, you find a "
 				+ "tiny shack hugging the cave wall.");
-		Printers.printlnSleep(3500, "On the porch of the shack, a woman is sitting, reading with the help of a little "
+		Printers.printlnSleep(3500, "On the porch of the shack, a woman is sitting and reading with the help of a little "
 				+ "porchlight hanging over her head.");
 		Printers.printSleep(2000, "The woman puts down her book and looks to her left,");
 		Printers.printlnSleep(2000," then back to her right, locking eyes with you.");
-		Printers.printlnSleep(2000, "She visilbly jumps, but after a moment calls for you to come over to her.");
+		Printers.printlnSleep(2000, "She visibly jumps, but after a moment calls for you to come over to her.");
 		Printers.printlnSleep(2000, "You sit down in the chair next to her. ");
 		Printers.printlnSleep(2000, "She's tall, thin as a rail, and deathly pale.");
 		Printers.printlnSleep(1250, "She turns to you and says:");
 		dialogue();
 	}
-	
+ 	
 	public static void dialogue() {
 		if(Main.playerSheet.getEnergy() < 20) 
 			Printers.printlnSleep(2000, "\"Good god, you look awful. Come in, you need to eat!\"");
@@ -145,7 +145,7 @@ public class House {
 		Printers.printlnSleep(1000, "\"So, are you heading into town?\"");	
 		switch(Printers.optionDialog("What would you like to say?", new String[] {"Town?", "I'm trying to get out of this cave."})) {
 		case 0: Printers.printlnSleep(3000,"\"There's a settlement a couple thousand feet up that way. The direction you came from is"
-				+ " a dead end, I'm not entirely sure where you came from.\""); break;
+				+ " a dead end, I'm not entirely sure how you got there.\""); break;
 		case 1: 
 			Printers.printlnSleep(3000, "\"The surface? It's possible. There's a town up that way that might be able "
 				+ "to give you some directions.\"");
@@ -156,5 +156,3 @@ public class House {
 	}
 
 }
-
-
