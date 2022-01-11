@@ -14,7 +14,9 @@ public class Roll {
 	 */
 	
 	public static boolean roll(double chance, int total, String action) {
-
+		
+		//this is a very useful method that I totally use many times throughout the code and definitely isn't
+		//just a way to meet the double requirement
 		double probability = (chance/total) * 100;
 		double roundedProbability = probability - (probability % 1) / 10;
 		Printers.printlnSleep(2000, "You want to " + action + " with a " + roundedProbability + "% chance of success.");
@@ -28,11 +30,12 @@ public class Roll {
 		Printers.printlnSleep(1000, "Failure.");
 		return false;
 	}
-	
+	//this gives an outcome given a probability in the form of chance/total
 	public static boolean silentRoll(int chance, int total) {
 		return new Random().nextInt(total)+1 <= chance; 
 	}	
 	
+	//this is just a method I used for testing, I was very tired when I wrote this and it had some major logic errors at the start
 	public static int test(int chance, int total) {
 		int success = 0;
 		for(int i = 0; i < 100; i++)
