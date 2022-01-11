@@ -25,7 +25,7 @@ public class ResourceSheet {
 		sanity = 100;
 		level = 1;
 	}
-	//getters/setters, some (almost all) of which aren't being used anymore lol
+
 	public double getHealth() {
 		return health;
 	}
@@ -34,12 +34,10 @@ public class ResourceSheet {
 		health += a;
 		if (health > 10)
 			health = 10;
-		ResourceDisplay.updateText();
 	}
 	
 	public void setHealth(double a) {
 		health = a;
-		ResourceDisplay.updateText();
 	}
 	
 	public int getEnergy() {
@@ -52,14 +50,12 @@ public class ResourceSheet {
 			energy = 100;
 		else if (energy < 0)
 			energy = 0;
-		ResourceDisplay.updateText();
 		if (energy <= 0)
 			Player.death();
 	}
 	
 	public void setEnergy(int a) {
 		energy = a;
-		ResourceDisplay.updateText();
 	}
 	
 	public int getSanity() {
@@ -72,12 +68,10 @@ public class ResourceSheet {
 			sanity = 100;
 		else if (sanity < 0)
 			sanity = 0;
-		ResourceDisplay.updateText();
 	}
 	
 	public void setSanity(int a) {
 		sanity = a;
-		ResourceDisplay.updateText();
 	}
 	
 	public int getExperience() {
@@ -90,14 +84,12 @@ public class ResourceSheet {
 	
 	public void setLevel(int a) {
 		level = a;
-		ResourceDisplay.updateText();
 	}
 	
 	public void addExperience(int a) {
 		experience += a;
 		if (experience >= 10 + (level - 1))
 			level++;
-		ResourceDisplay.updateText();
 	}
 	
 	public char getPlayerPosition() {
